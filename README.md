@@ -1,2 +1,1 @@
-# project1
-Udacity practice
+# udacity project
