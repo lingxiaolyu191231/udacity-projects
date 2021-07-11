@@ -25,7 +25,16 @@ from sklearn.neighbors import KNeighborsClassifier
 
 
 def load_data(database_filepath):
-    engine = create_engine('sqlite:///InsertDatabaseName.db')
+    """
+    input: 
+    database_filepath: in sql_table format
+
+    output:
+    X: input feature data
+    Y: target output data
+    category_names: output Y category names
+    """
+    engine = create_engine(database_filepath)
     df = pd.read_sql_table(database_filepath, engine)
     X = df.iloc[:,1].astype('str')
     Y = df.iloc[:,4:]
@@ -35,6 +44,12 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    """
+    input:
+        text: message in text format
+    output:
+        clean_tokens: clean text message
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -47,6 +62,11 @@ def tokenize(text):
 
 
 def build_model():
+    """
+    build model pipeline
+    input: None
+    output: a model to be implemented with hyperparameters set up
+    """
     class StartingVerbExtractor(BaseEstimator, TransformerMixin):
 
         def starting_verb(self, text):
@@ -103,6 +123,9 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    evaluate the performance of the model 
+    """
     y_pred = model.predict(X_test)
 
     ind = 0
