@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 import numpy as np
-from sqlalchemy import create_engine
+import sqlite3
 
 
 def load_data(messages_filepath, categories_filepath):
@@ -39,6 +39,7 @@ def clean_data(df):
         categories[column] = categories[column].apply(lambda x: x[-1])
         # convert column from string to numeric
         categories[column] = pd.to_numeric(categories[column], downcast = 'integer')
+    categories.loc[categories['related']>1,'related'] = 1
     df.drop(columns=['categories'],inplace=True)
     df = pd.concat([df, categories], axis=1)
     df.drop_duplicates(subset=['message'],inplace=True)
@@ -52,8 +53,8 @@ def save_data(df, database_filename):
 
     output: (no output)
     """
-    engine = create_engine('sqlite:///InsertDatabaseName.db')
-    df.to_sql(database_filename, engine, index=False)
+    conn = sqlite3.connect(database_filename)
+    df.to_sql(database_filename, con=conn, index=False, if_exists='replace')
 
 
 def main():
