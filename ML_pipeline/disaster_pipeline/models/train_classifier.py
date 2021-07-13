@@ -138,6 +138,15 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    """
+    use pickle to save model
+    
+    input:
+        model: training model
+        model_filepath: file path to save model
+
+    output: None
+    """
     filename = model_filepath
     pickle.dump(model, open(filename, 'wb'))
 
