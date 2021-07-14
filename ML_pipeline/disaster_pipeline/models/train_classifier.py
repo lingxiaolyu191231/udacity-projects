@@ -34,7 +34,7 @@ def load_data(database_filepath):
     Y: target output data
     category_names: output Y category names
     """
-    engine = create_engine(“sqlite:///"+database_filepath)
+    engine = create_engine("sqlite:///"+database_filepath)
     df = pd.read_sql_table(database_filepath, engine)
     X = df.iloc[:,1].astype('str')
     Y = df.iloc[:,4:]
