@@ -8,12 +8,12 @@
 [image3]: ./images/vgg16_model_draw.png "VGG16 Model Figure"
 
 ## Dependencies
-image folder # images used in notebook for explanation
-test_images folder # test images for final model testing 
-saved_model # best models for training set saved
-dog_app.ipynb # jupyter notebook for data processing and model implementation
-extract_bottleneck_features.py # pre-trained bottleneck features module that will be used to create CNN models
-bottleneck_features # pre-trained feature data saved from extract_bottleneck_features.py
+- image folder # images used in notebook for explanation
+- test_images folder # test images for final model testing 
+- saved_model # best models for training set saved
+- dog_app.ipynb # jupyter notebook for data processing and model implementation
+- extract_bottleneck_features.py # pre-trained bottleneck features module that will be used to create CNN models
+- bottleneck_features # pre-trained feature data saved from extract_bottleneck_features.py
 
 ## Project Overview
 
