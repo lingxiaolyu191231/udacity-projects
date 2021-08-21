@@ -515,13 +515,12 @@ def main():
                                 y_train_preds_rf,
                                 y_test_preds_lr,
                                 y_test_preds_rf)
-
+    
     feature_importance_plot(
         rfc_model,
         X_train,
         './images/results/rfc_features_importance.png')
-    feature_importance_plot(
-        lr_model, X_train, './images/results/lr_features_importance.png')
+
 
 
 if __name__ == '__main__':
